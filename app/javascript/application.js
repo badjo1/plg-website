@@ -2,7 +2,9 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
-import Webcam from "webcam-easy"
+import * as "bootstrap-icons"
+//import "bootstrap-icons/font/bootstrap-icons.css" //dubblop see config assets
+// import Web3 from 'web3'
 
 document.addEventListener("turbo:load", () => {
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -10,14 +12,3 @@ document.addEventListener("turbo:load", () => {
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })
 })
-
-
-document.addEventListener("turbo:load", () => {
-  var webcamElement = document.getElementById('webcam')
-  var canvasElement = document.getElementById('canvas')
-  var snapSoundElement = document.getElementById('snapSound')
-  const webcam = new Webcam(webcamElement, 'user', canvasElement, snapSoundElement)
-})
-
-
-
