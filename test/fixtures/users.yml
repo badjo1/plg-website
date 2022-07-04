@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  eth_address: a5409ec958c83c3f309868babaca7c86dcb077c1
+  eth_address: 'a5409ec958c83c3f309868babaca7c86dcb077c1'
 #
 two: {}
 # column: value
