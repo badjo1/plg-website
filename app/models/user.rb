@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :nonce_token
+  has_many :animated_gifs
 
   validates :eth_address, presence: true, length: { maximum: 255 },
                     if: -> { Eth::Address.new(eth_address).valid? },

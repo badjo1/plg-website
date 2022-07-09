@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :animated_gifs
   
   root "pages#home"
 

@@ -1,0 +1,8 @@
+<%= render @animated_gif %>
+
+<div>
+  <%= link_to "Edit this animated gif", edit_animated_gif_path(@animated_gif) %> |
+  <%= link_to "Back to animated gifs", animated_gifs_path %>
+
+  <%= button_to "Destroy this animated gif", @animated_gif, method: :delete %>
+</div>

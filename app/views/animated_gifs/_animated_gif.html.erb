@@ -1,0 +1,16 @@
+<div id="<%= dom_id animated_gif %>" class="col">
+  <div class="card h-100">
+    <%= link_to animated_gif do%>
+      <%= image_tag animated_gif_url(animated_gif, format: "gif"), :class => "card-img-top ratio ratio-16x9" %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= animated_gif.title %></h5>
+      <p class="card-text"><%= animated_gif.description %><</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last update <%= time_tag animated_gif.created_at, "data-local": "time-ago" %></small>
+    </div>
+  </div>
+</div>
+
+
