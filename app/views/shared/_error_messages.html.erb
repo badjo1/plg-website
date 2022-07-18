@@ -1,0 +1,27 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      <%= t 'error_explanation', count: object.errors.count %>
+      <% if Rails.env.development? %>
+        <ul>
+        <% object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+       <% end %> 
+    </div>
+  </div>
+<% end %>
+
+
+<% if object.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(object.errors.count, "error") %> prohibited this animated_block from being saved:</h2>
+
+    <ul>
+      <% object.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<div id="<%= dom_id animated_block %>">
+  <p>
+    <strong>Animated gif:</strong>
+    <%= animated_block.animated_gif_id %>
+  </p>
+
+  <p>
+    <strong>Block word:</strong>
+    <%= animated_block.block_word %>
+  </p>
+
+  <p>
+    <strong>Block style:</strong>
+    <%= animated_block.block_style %>
+  </p>
+
+</div>
+
+  <%= link_to "Edit this animated block", edit_animated_block_path(animated_block) %> |
+  <%= button_to "Destroy this animated block", animated_block, method: :delete %>

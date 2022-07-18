@@ -1,8 +1,40 @@
-<%= render @animated_gif %>
+<h2>Edit your animated gif</h2>
+<div id="animated_blocks" class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+      <div class="card card h-100 text-center">
+      <%= link_to "New animated block", new_animated_gif_animated_block_path(@animated_gif) %>
+    </div>
+  </div> 
+  <% @animated_gif.animated_blocks.each do |animated_block| %>
+  
+    <div class="col">
+      <div class="card card h-100 text-center">
+        <div class="card-body" style="color: <%= animated_block.style.text_color %>;background-color: <%= animated_block.style.bg_color %>;">
+          <p class="card-text">
+            <%= animated_block.first_block_line %><br/>
+            <%= animated_block.second_block_line %><br/>
+            <%= animated_block.third_block_line %>
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <div class="btn-group btn-group-sm" role="group">
+            <%= link_to "Edit", edit_animated_block_path(animated_block), class: "btn btn-primary" %> 
+            <%= link_to "Copy", copy_animated_block_path(animated_block), class: "btn btn-primary" %>
+            <%= button_to "remove", animated_block, method: :delete, class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+  <% end %>
+</div>
+
+
 
 <div>
-  <%= link_to "Edit this animated gif", edit_animated_gif_path(@animated_gif) %> |
   <%= link_to "Back to animated gifs", animated_gifs_path %>
+<%= link_to "Edit", edit_animated_gif_path(@animated_gif) %>
+  <%= render 'shared/btn_delete', href: @animated_gif %>
 
-  <%= button_to "Destroy this animated gif", @animated_gif, method: :delete %>
 </div>

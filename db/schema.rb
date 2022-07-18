@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_120534) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_11_100345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "animated_blocks", force: :cascade do |t|
+    t.bigint "animated_gif_id", null: false
+    t.string "block_word", limit: 9
+    t.string "block_style", limit: 15
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animated_gif_id"], name: "index_animated_blocks_on_animated_gif_id"
+  end
 
   create_table "animated_gifs", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -39,5 +48,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_120534) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "animated_blocks", "animated_gifs"
   add_foreign_key "animated_gifs", "users"
 end

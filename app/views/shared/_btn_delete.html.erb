@@ -1,0 +1,5 @@
+ 
+<%= button_to href, method: :delete, class:"btn btn-outline-secondary" , form: {data: { turbo_confirm: 'Are you sure?' } } do %>
+  <i class="bi bi-trash"></i>
+  <span class="small text-uppercase"><%= text ||= "delete" %></span>
+<% end %>

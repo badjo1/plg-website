@@ -1,0 +1,17 @@
+<%= bootstrap_form_with(model: animated_block) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+
+    <%= form.text_field :block_word %>
+
+    <%= form.form_group :block_style, label: { text: "Style" }, help: "custom style for this space" do %>
+        <% BlockStyle::TEMPLATES.each do |template| %>
+          <%= form.radio_button :block_style, template.name, label: template.name, inline: false,
+            wrapper: {class: 'w-50', style: "background:#{template.bg_color}; color: #{template.text_color}"} %>
+        <% end %>
+    <% end %>
+
+
+
+
+  <%= form.submit "Save" %>
+<% end %>

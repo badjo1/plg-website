@@ -66,7 +66,11 @@ class AnimatedGifsController < ApplicationController
 
   # DELETE /animated_gifs/1 or /animated_gifs/1.json
   def destroy
-    @animated_gif.destroy
+
+    AnimatedGif.transaction do
+      @animated_gif.animated_blocks.destroy_all
+      @animated_gif.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to animated_gifs_url, notice: "Animated gif was successfully destroyed." }

@@ -1,13 +1,27 @@
 class AnimatedGif < ApplicationRecord
   belongs_to :user
+  has_many :animated_blocks
+
+  # def generate
+  #   frames = 10
+  #   gif = Magick::ImageList.new
+    
+  #   frames.times do |i|
+  #     image = Magick::Image.new(width, height).color_fill_to_border(1, 1, random_color)
+  #     annotate_word(image: image,word: 'NFTPLGAMS')
+  #     image.delay = 30
+  #     gif << image
+  #   end
+  
+  #   gif.to_blob { self.format = 'gif' }    
+  # end
+
 
   def generate
-    frames = 10
     gif = Magick::ImageList.new
-    
-    frames.times do |i|
-      image = Magick::Image.new(width, height).color_fill_to_border(1, 1, random_color)
-      annotate_word(image: image,word: 'NFTPLGAMS')
+    animated_blocks.each do |block|
+      image = Magick::Image.new(width, height).color_fill_to_border(1, 1, block.style.bg_color)
+      annotate_word(image: image,block: block)
       image.delay = 30
       gif << image
     end
@@ -16,8 +30,8 @@ class AnimatedGif < ApplicationRecord
   end
 
 
-  def annotate_word(image:, word:)
-    c = word.chars
+  def annotate_word(image:, block:)
+    c = block.block_word.chars
     draw = Magick::Draw.new
     draw.gravity = Magick::CenterGravity
 
@@ -25,11 +39,11 @@ class AnimatedGif < ApplicationRecord
     draw.pointsize = self.fontsize
     draw.font_weight = Magick::BoldWeight
     draw.font_style = Magick::NormalStyle
-    draw.fill = random_color
+    draw.fill = block.style.text_color
 
-    image.annotate(draw, 0, 0, 0, -130, c.first(3).join(" "))
-    image.annotate(draw, 0, 0, 0, 0, c[3..5].join(" ")) 
-    image.annotate(draw, 0, 0, 0, 130, c[6..8].join(" ")) {
+    image.annotate(draw, 0, 0, 0, -130, block.first_block_line)
+    image.annotate(draw, 0, 0, 0, 0, block.second_block_line) 
+    image.annotate(draw, 0, 0, 0, 130, block.third_block_line) {
       #self.fill=colour
     }
 
