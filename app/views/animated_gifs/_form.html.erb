@@ -1,17 +1,11 @@
-<%= form_with(model: animated_gif) do |form| %>
+<%= bootstrap_form_for(animated_gif, label_errors: true) do |form| %>
+
   <%= render 'shared/error_messages', object: form.object %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <%= form.text_field :title %>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
+  <%= form.text_area :description %>
+  
+  <%= form.submit %>
 
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

@@ -1,4 +1,4 @@
-class AnimatedGifsController < ApplicationController
+class AnimatedGifsController < ProtectedController
   before_action :set_animated_gif, only: %i[edit update destroy ]
 
   # GET /animated_gifs or /animated_gifs.json

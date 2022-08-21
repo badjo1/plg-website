@@ -1,20 +1,8 @@
 <h1>Animated gifs</h1>
 
-<div id="animated_gifs">
-  <% @animated_gifs.each do |animated_gif| %>
-    <%= render animated_gif %>
-    <p>
-      <%= link_to "Show this animated gif", animated_gif %>
-    </p>
-  <% end %>
-</div>
-
-
-
-
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <% @animated_gifs.each do |animated_gif| %>  
-  <div class="col">
+  <div class="col px-4 py-5">
     <div class="card h-100">
       <%= link_to animated_gif do%>
         <%= image_tag animated_gif_url(animated_gif, format: "gif"), :class => "card-img-top ratio ratio-16x9" %>
@@ -31,20 +19,18 @@
   <% end %>
 </div>
 
-
-
-  <div class="col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to Block Play</h1>
-        <p class="lead">Block Play enables you to show your creative mastery within the limits of only nine 'blocks'.
+<div class="col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to Block Play</h1>
+      <p class="lead">Block Play enables you to show your creative mastery within the limits of only nine 'blocks'.
 This Block Play template is designed to create textual variations on the NFT Playground Amsterdam Logo in one or maybe a thousand different versions.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <%= link_to "Make a Block Play", new_animated_gif_path, class: "btn btn-primary btn-lg px-4 me-md-2" %>
-        </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <%= link_to "Make a Block Play", new_animated_gif_path, class: "btn btn-primary btn-lg px-4 me-md-2" %>
       </div>
     </div>
   </div>
+</div>

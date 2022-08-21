@@ -53,7 +53,7 @@ class AnimatedBlocksController < ApplicationController
     @animated_block.destroy
 
     respond_to do |format|
-      format.html { redirect_to animated_gif_url(animated_gif_id), notice: "Animated block was successfully destroyed." }
+      format.html { redirect_to animated_gif_url(animated_gif_id), notice: "Animated block was successfully destroyed." , status: 303}
       format.json { head :no_content }
     end
   end

@@ -2,6 +2,11 @@ class AnimatedGif < ApplicationRecord
   belongs_to :user
   has_many :animated_blocks
 
+  validates :title        , presence: true
+  validates :description  , presence: true
+  validates :title        , length: {minimum: 2, maximum: 255}, allow_blank: true
+  validates :description  , length: {minimum: 2, maximum: 255}, allow_blank: true
+  
   # def generate
   #   frames = 10
   #   gif = Magick::ImageList.new
